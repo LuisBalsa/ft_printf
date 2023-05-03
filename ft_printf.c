@@ -6,50 +6,71 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/02 21:35:29 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:48:29 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	flags_nbr(char *param, int *flags)
+static int	ft_intlen(int n)
+{
+	int	len;
+
+	len = !n;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
+static int	flags_nbr(const char *param, int *flags)
 {
 	int	i;
+	int	n;
 
+	n = ft_atoi(param);
+	i = ft_intlen(n) - 1;
+	if (flags[5])
+		flags[6] = n;
+	else
+		flags[7] = n;
 	return (i);
 }
 
-static int	check_flags(char *param, int *flags, char *cflags)
+static int	*check_flags(const char *param, int *flags, int *k)
 {
-	int	i;
-	int	j;
+	int		j;
+	char	*cflags;
 
-	i = 0;
-	while (param[i] && !ft_strchr("%csdixXup", param[i]))
+	cflags = " +#-0.";
+	j = 8;
+	while (j)
+		flags[--j] = 0;
+	while (param[*k] && !ft_strchr("csdixXup", param[*k]))
 	{
 		j = 0;
 		while (cflags[j])
 		{
-			if (param[i] == cflags[j])
+			if (param[*k] == cflags[j])
 				flags[j] = 1;
 			j++;
 		}
-		if (param[i] >= '1' && param[i] <= '9')
-			i += flags_nbr(param[i], flags);
-		i++;
+		if (param[*k] >= '1' && param[*k] <= '9')
+			*k += flags_nbr(&param[*k], flags);
+		(*k)++;
 	}
-	return (i);
+	return (flags);
 }
 
-static int	(*check_conversion(char *param))(va_list, t_list)
+static int	check_conversion(const char param, va_list ap, int *flags)
 {
-	if (!(*param))
-		return (NULL);
-	if (*param == '%')
-		return (print_perc);
-	if (*param == 'c')
-		return (print_chr);
-	if (*param == 's')
+	if (!(param))
+		return (0);
+	if (param == 'c')
+		return (print_chr(ap, flags));
+/* 	if (*param == 's')
 		return (print_str);
 	if (*param == 'd' || *param == 'i')
 		return (print_nbr);
@@ -58,34 +79,48 @@ static int	(*check_conversion(char *param))(va_list, t_list)
 	if (*param == 'u')
 		return (print_unsigned);
 	if (*param == 'p')
-		return (print_pointer);
-	return (NULL);
+		return (print_pointer); */
+	return (0);
 }
 
 int	ft_printf(const char *param, ...)
 {
 	int		count;
+	int		k;
 	int		flags[8];
-	char	*cflags;
 	va_list	ap;
-	int		(*f)(va_list, t_flags);
 
 	va_start(ap, param);
-	cflags = " +#-0.";
-	count = 7;
-	while (count + 1)
-		flags[count--] = 0;
-	while (*param)
+	count = 0;
+	k = 0;
+	while (param[k])
 	{
-		if (*param == '%')
+		if (param[k] == '%' && param[k + 1] && param[k + 1] != '%')
 		{
-			param++;
-			/* code */
+			k++;
+			check_flags(param, flags, &k);
+			count += check_conversion(param[k], ap, flags);
 		}
 		else
-			count += write(1, param, 1);
-		param++;
+		{
+			ft_putchar_fd(param[k], 1);
+			count++;
+		}
+		k++;
 	}
+	printf("\nfim do loop\n");
 	va_end(ap);
+	k = 0;
+	while (k < 8)
+		printf("%d.", flags[k++]);
 	return (count);
+}
+
+int	main(void)
+{
+	int	i;
+
+	i = ft_printf("%.444c12345678", 98);
+	printf("\n%d\n", i);
+	return (0);
 }
