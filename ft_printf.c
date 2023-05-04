@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/03 21:48:29 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 02:39:16 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static int	check_conversion(const char param, va_list ap, int *flags)
 		return (0);
 	if (param == 'c')
 		return (print_chr(ap, flags));
-/* 	if (*param == 's')
-		return (print_str);
-	if (*param == 'd' || *param == 'i')
+	if (param == 's')
+		return (print_str(ap, flags));
+/* 	if (*param == 'd' || *param == 'i')
 		return (print_nbr);
 	if (*param == 'x' || *param == 'X')
 		return (print_hex);
@@ -102,13 +102,10 @@ int	ft_printf(const char *param, ...)
 			count += check_conversion(param[k], ap, flags);
 		}
 		else
-		{
-			ft_putchar_fd(param[k], 1);
-			count++;
-		}
+			count += write(1, &param[k], 1);
 		k++;
 	}
-	printf("\nfim do loop\n");
+	printf("\n0.1.2.3.4.5.6.7.\n");
 	va_end(ap);
 	k = 0;
 	while (k < 8)
@@ -120,7 +117,9 @@ int	main(void)
 {
 	int	i;
 
-	i = ft_printf("%.444c12345678", 98);
+	i = ft_printf("I%7.2sI", "'abc'");
+	printf("\n%d\n", i);
+	i = printf("I%7.2sI", "'abc'");
 	printf("\n%d\n", i);
 	return (0);
 }
