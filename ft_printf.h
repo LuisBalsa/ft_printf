@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:25:30 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 14:52:58 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:29:10 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_printf(const char *param, ...);
 int	print_chr(char c, int *flags);
 int	print_str(char *s, int *flags);
 int	print_nbr(int nbr, int *flags);
-int	print_hex(unsigned int nbr, int *flags);
+int	print_hex(unsigned int nbr, int *flags, const char c);
 int	print_unsigned(unsigned int nbr, int *flags);
 int	print_pointer(unsigned long long ptr, int *flags);
 

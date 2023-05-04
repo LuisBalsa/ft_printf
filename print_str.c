@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 00:32:08 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 15:07:45 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:51:01 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	print_str(char *s, int *flags)
 	int		len;
 
 	if (!s)
-		return (write(1, "(null)", 6));
+		return (print_str("(null)", flags));
 	len = (int)ft_strlen(s);
 	i = 0;
 	if (flags[5] && len > flags[6])

@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 14:48:51 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:25:24 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	*check_flags(const char *param, int *flags, int *k)
 	j = 8;
 	while (j)
 		flags[--j] = 0;
-	while (param[*k] && !ft_strchr("csdixXup", param[*k]))
+	while (param[*k] && !ft_strchr("%csdixXup", param[*k]))
 	{
 		j = 0;
 		while (cflags[j])
@@ -68,15 +68,17 @@ static int	check_conversion(const char param, va_list ap, int *flags)
 {
 	if (!(param))
 		return (0);
+	if (param == '%')
+		return (write(1, "%", 1));
 	if (param == 'c')
 		return (print_chr(va_arg(ap, int), flags));
 	if (param == 's')
 		return (print_str(va_arg(ap, char *), flags));
-/* 	if (*param == 'd' || *param == 'i')
-		return (print_nbr);
-	if (*param == 'x' || *param == 'X')
-		return (print_hex);
-	if (*param == 'u')
+	if (param == 'd' || param == 'i')
+		return (print_nbr(va_arg(ap, int), flags));
+	if (param == 'x' || param == 'X')
+		return (print_hex(va_arg(ap, unsigned int), flags, param));
+/* 	if (*param == 'u')
 		return (print_unsigned);
 	if (*param == 'p')
 		return (print_pointer); */
@@ -95,7 +97,7 @@ int	ft_printf(const char *param, ...)
 	k = 0;
 	while (param[k])
 	{
-		if (param[k] == '%' && param[k + 1] && param[k + 1] != '%')
+		if (param[k] == '%' && param[k + 1])
 		{
 			k++;
 			check_flags(param, flags, &k);
@@ -105,22 +107,6 @@ int	ft_printf(const char *param, ...)
 			count += write(1, &param[k], 1);
 		k++;
 	}
-	printf("\n0.1.2.3.4.5.6.7.\n");
 	va_end(ap);
-	k = 0;
-	while (k < 8)
-		printf("%d.", flags[k++]);
 	return (count);
 }
-
-/* int	main(void)
-{
-	int	i;
-
-	i = ft_printf("I% 9sI", "'abc'");
-	printf("\n%d\n", i);
-	i = printf("I%+7dI", 1234);
-	printf("\n%d\n", i);
-	return (0);
-}
- */

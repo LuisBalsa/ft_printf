@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_chr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 20:38:05 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 15:56:32 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/04 15:45:11 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/05 00:24:09 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_chr(char c, int *flags)
+int	main(void)
 {
-	int		i;
+	int	i;
 
-	i = 0;
-	if (flags[3])
-	{
-		write(1, &c, 1);
-		while (i < flags[7] - 1)
-			i += write(1, " ", 1);
-	}
-	else
-	{
-		while (i < flags[7] - 1)
-			i += write(1, " ", 1);
-		write(1, &c, 1);
-	}
-	return (1 + i);
+	i = ft_printf("%5.0i", 1);
+	printf("\n%d\n", i);
+	i = printf("%5.0i", 0);
+	printf("\n%d\n", i);
+	return (0);
 }
