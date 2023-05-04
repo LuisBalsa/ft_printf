@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:31:10 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 02:42:32 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:56:35 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,4 @@ int	print_nbr(va_list ap, int *flags)
 	return (len + i + flags[1]);
 }
 
-//Falta tratar caso do +, dividir em mais funções, verificar tamanho quando negativo...
+//Falta tratar caso do + e ' ', dividir em mais funções, verificar tamanho quando negativo...

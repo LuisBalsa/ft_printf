@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 02:39:16 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:28:21 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,14 @@ int	ft_printf(const char *param, ...)
 	return (count);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	int	i;
 
-	i = ft_printf("I%7.2sI", "'abc'");
+	i = ft_printf("I% 9sI", "'abc'");
 	printf("\n%d\n", i);
-	i = printf("I%7.2sI", "'abc'");
+	i = printf("I%+7dI", 1234);
 	printf("\n%d\n", i);
 	return (0);
 }
+ */
