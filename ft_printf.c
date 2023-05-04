@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 12:28:21 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:48:51 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ static int	check_conversion(const char param, va_list ap, int *flags)
 	if (!(param))
 		return (0);
 	if (param == 'c')
-		return (print_chr(ap, flags));
+		return (print_chr(va_arg(ap, int), flags));
 	if (param == 's')
-		return (print_str(ap, flags));
+		return (print_str(va_arg(ap, char *), flags));
 /* 	if (*param == 'd' || *param == 'i')
 		return (print_nbr);
 	if (*param == 'x' || *param == 'X')

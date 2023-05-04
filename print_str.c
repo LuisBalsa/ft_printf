@@ -6,24 +6,25 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 00:32:08 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 12:28:33 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:53:28 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_str(va_list ap, int *flags)
+int	print_str(char *s, int *flags)
 {
 	char	*str;
 	int		i;
 	int		len;
 
-	str = va_arg(ap, char *);
-	len = (int)ft_strlen(str);
+	if (!s)
+		return (write(1, "(null)", 6));
+	len = (int)ft_strlen(s);
 	i = 0;
 	if (flags[5] && len > flags[6])
 		len = flags[6];
-	str = ft_substr(str, 0, len);
+	str = ft_substr(s, 0, len);
 	if (flags[3])
 	{
 		ft_putstr_fd(str, 1);

@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:31:10 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 10:56:35 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:51:31 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ static int	ft_intlen(int n)
 	return (len);
 }
 
-int	print_nbr(va_list ap, int *flags)
+int	print_nbr(int nbr, int *flags)
 {
-	int		nbr;
 	int		i;
 	int		len;
 	char	s;
 
-	nbr = va_arg(ap, int);
 	len = ft_intlen(nbr);
 	i = 0;
 	s = ' ';
