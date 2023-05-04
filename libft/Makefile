@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/19 15:35:28 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/04 12:40:43 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/04 13:03:58 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJS = ${SRC:.c=.o}
 OBJS_BONUS = ${SRC_BONUS:.c=.o}
 HEADER = libft.h
 INCLUDE = -I .
-CC = gcc
+CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
