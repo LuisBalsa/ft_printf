@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/06 00:43:07 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/06 00:49:03 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,10 +86,10 @@ git : tclean
 	@ git status
 	@ echo "$(YELLOW)Enter commit message: $(CYAN)"
 	@ read message
-	@ git add .
-	@ git commit -m "$message"
-	@ git push $(DEF_COLOR)
-	@ echo "$(YELLOW)Git push done with sucess$(DEF_COLOR)"
-
+	@ echo "$(YELLOW)"
+	git add .
+	git commit -m "$message"
+	git push
+	@ echo "Git push done with sucess$(DEF_COLOR)"
 	
 .PHONY:		all clean fclean re
