@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/05 20:40:22 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/06 00:43:07 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,14 @@ tclean : fclean
 	@ echo "$(RED)Removed 'output' and 'main.o' with sucess$(DEF_COLOR)"
 
 git : tclean
-	@ git status && git add . && read -p "Enter commit message: " message && read -p "Enter commit comment: " comment && git commit -m "$message" -m "$comment" && git push
+	@ echo "$(GREEN)\n\n\tEverything cleaned\n$(CYAN)\tGit status:\n\n\n"
+	@ git status
+	@ echo "$(YELLOW)Enter commit message: $(CYAN)"
+	@ read message
+	@ git add .
+	@ git commit -m "$message"
+	@ git push $(DEF_COLOR)
+	@ echo "$(YELLOW)Git push done with sucess$(DEF_COLOR)"
 
+	
 .PHONY:		all clean fclean re
