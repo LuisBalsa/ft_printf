@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:45:11 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/05 00:24:09 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:45:50 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@ int	main(void)
 {
 	int	i;
 
-	i = ft_printf("%5.0i", 1);
+	ft_printf("ft_%c", 'i');
+	i = ft_printf("l%015il", 9223372036854775807LL);
+	ft_printf("%c", 'i');
 	printf("\n%d\n", i);
-	i = printf("%5.0i", 0);
+	printf("%4c", 'i');
+	i = printf(" %015lli ", 9223372036854775807LL);
+	printf("%c", 'i');
 	printf("\n%d\n", i);
 	return (0);
 }

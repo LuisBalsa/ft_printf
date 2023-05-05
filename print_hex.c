@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 22:38:43 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/05 00:13:01 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:48:36 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static int	hex_len(unsigned int num)
 	i++;
 	return (i);
 }
+
+
 
 int	print_hex(unsigned int nbr, int *flags, const char c)
 {

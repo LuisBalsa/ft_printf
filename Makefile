@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/05 00:06:16 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/05 20:40:22 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(addsuffix .o, $(SRC_FILES))
 
 # Rules
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) libft/libft.a
 	@ make -C libft
 	@ echo "$(GREEN)Made libft.a with sucess$(DEF_COLOR)"
 	@ cp libft/libft.a .
@@ -73,7 +73,7 @@ re : fclean all
 
 test : all
 	@$(CC) $(CFLAGS) $(HDR) -c main.c -o main.o
-	@$(CC) $(FLAGS) -o output main.o -L. -lftprintf
+	@$(CC) $(CFLAGS) -o output main.o -L. -lftprintf
 	@echo "$(CYAN)Output:$(DEF_COLOR)"
 	@./output
 
