@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/06 01:45:08 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/06 01:46:14 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,6 @@ git :
 	@ git add . && git status
 	@ echo "$(YELLOW)" && read -p "Enter commit message: " message && read -p "Enter commit comment: " comment && git commit -m "$message" -m "$comment"
 	@ echo "$(GRAY)" && git push
-	@ echo "$(GREEN)Git push done with sucess$(DEF_COLOR)"
+	@ echo "$(GREEN)\n\nGit push done with sucess\n\n$(DEF_COLOR)"
 
 .PHONY:		all clean fclean re
