@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/06 01:03:12 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/06 01:24:37 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,13 +83,11 @@ tclean : fclean
 
 
 MESSAGE := $(shell echo $$MESSAGE)
-git : tclean
-	@ echo "$(GREEN)\n\n\tEverything cleaned\n$(CYAN)\tGit status:\n\n\n"
-	@ git status
-	@ echo "$(YELLOW)Enter commit message: $(CYAN)"
-	@ read MESSAGE
-	@ echo "$(YELLOW)"
-	echo $(DIRNAME)
+git :
+	@ clear && sleep 1 && echo "$(RED)\n\n\n\nStart cleanning...\n\n" && sleep 1
+	@ make tclean
+	@ echo "$(CYAN)\n\n\n\nEverything clean\n\n\n$(GREEN)Git status:\n\n$(DEF_COLOR)"
+	@ git status && echo "$(YELLOW)" && sleep 1 && read -p "Enter commit message: " message && read -p "Enter commit comment: " comment && git add . && git commit -m "$message" -m "$comment" && git push
 	@ echo "Git push done with sucess$(DEF_COLOR)"
-	
+
 .PHONY:		all clean fclean re
