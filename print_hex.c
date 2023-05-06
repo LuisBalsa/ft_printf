@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 22:38:43 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/05 16:48:36 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/06 16:52:01 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,50 @@ static void	ft_print_hex(unsigned int num, const char c)
 		if (num <= 9)
 			ft_putchar_fd(num + '0', 1);
 		else
-				ft_putchar_fd(num - 33 + c, 1);
+			ft_putchar_fd(num - 33 + c, 1);
 	}
+}
+
+static int	print_nbr_right(unsigned int nbr, int *flags, const char c)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (i < flags[7])
+			i += write(1, " ", 1);
+	if (flags[2])
+	{
+		flags[2] = write(1, "0", 1);
+		flags[2] += write(1, &c, 1);
+	}
+	while (j < flags[6])
+		j += write(1, "0", 1);
+	if (flags[5] < 2)
+		ft_print_hex(nbr, c);
+	return (i + j + flags[1] + flags[2]);
+}
+
+static int	print_nbr_left(unsigned int nbr, int *flags, const char c)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (flags[2])
+	{
+		flags[2] = write(1, "0", 1);
+		flags[2] += write(1, &c, 1);
+	}
+	while (j < flags[6])
+		j += write(1, "0", 1);
+	if (flags[5] < 2)
+		ft_print_hex(nbr, c);
+	while (i < flags[7])
+		i += write(1, " ", 1);
+	return (i + j + flags[1] + flags[2]);
 }
 
 static int	hex_len(unsigned int num)
@@ -42,26 +84,29 @@ static int	hex_len(unsigned int num)
 	return (i);
 }
 
-
-
 int	print_hex(unsigned int nbr, int *flags, const char c)
 {
-	int	i;
 	int	len;
 
 	len = hex_len(nbr);
-	i = 0;
-	if (flags[2])
+	if (!nbr)
+		flags[2] = 0;
+	if (flags[5] && !flags[6] && !nbr)
+		flags[5] += len--;
+	if (flags[4] && !flags[5])
 	{
-		flags[2] += write(1, "0", 1);
-		write(1, &c, 1);
+		flags[6] = flags[7];
+		flags[7] = 0;
 	}
-	if (flags[4])
-		while (i < flags[7] - flags[2] - len)
-			i += write(1, "0", 1);
-	else if (flags[5])
-		while (i < flags[6] - len)
-			i += write(1, "0", 1);
-	ft_print_hex(nbr, c);
-	return (len + i + flags[2]);
+	if (flags[6] > len)
+		flags[7] -= flags[6];
+	else
+		flags[7] -= len ;
+	if (flags[5])
+		flags[6] -= len;
+	else
+		flags[6] -= len ;
+	if (flags[3])
+		return (len + print_nbr_left(nbr, flags, c));
+	return (len + print_nbr_right(nbr, flags, c));
 }
