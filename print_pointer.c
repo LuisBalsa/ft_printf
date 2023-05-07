@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 12:47:54 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/07 16:59:42 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/07 21:25:58 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	first_nibble(unsigned long long addr)
 {
 	int	i;
 	int	hex;
-	int count;
+	int	count;
 
 	count = -1;
 	i = sizeof(addr) * 2 - 1;
