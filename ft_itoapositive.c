@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoapositive.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:45:11 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/07 17:23:49 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/07 18:32:44 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/07 18:35:26 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+char	*ft_itoapositive(long long n)
 {
-	int	i;
+	char		*c;
+	bool		sign;
+	long long	len;
 
-	ft_printf("ft_%c", '|');
-	i = ft_printf("%-30.10p", NULL);
-	ft_printf("%c", '|');
-	printf("\n%d\n", i);
-	printf("%4c", '|');
-	i = printf("%30p", NULL);
-	printf("%c", '|');
-	printf("\n%d\n", i);
-	return (0);
+	sign = n < 0;
+	len = ft_intlen(n, 10);
+	c = (char *)malloc(sizeof(char) * (len + 1));
+	if (!c)
+		return (NULL);
+	c[len] = '\0';
+	if (sign)
+	{
+		c[--len] = -(n % 10) + '0';
+		n = -(n / 10);
+	}
+	while (len--)
+	{
+		c[len] = n % 10 + '0';
+		n = n / 10;
+	}
+	return (c);
 }

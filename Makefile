@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/06 11:29:44 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/07 18:35:03 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Sources to objects
-SRC_FILES = ft_printf print_chr print_str print_nbr print_hex
+SRC_FILES = ft_printf print_chr print_str print_nbr print_hex print_unsigned print_pointer ft_intlen ft_puthex_fd ft_itoapositive
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
 

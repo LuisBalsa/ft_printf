@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:45:11 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/07 17:23:49 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/07 18:20:46 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/07 18:25:41 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+void	ft_puthex_fd(unsigned int num, const char c, int fd)
 {
-	int	i;
-
-	ft_printf("ft_%c", '|');
-	i = ft_printf("%-30.10p", NULL);
-	ft_printf("%c", '|');
-	printf("\n%d\n", i);
-	printf("%4c", '|');
-	i = printf("%30p", NULL);
-	printf("%c", '|');
-	printf("\n%d\n", i);
-	return (0);
+	if (num >= 16)
+	{
+		ft_puthex_fd(num / 16, c, fd);
+		ft_puthex_fd(num % 16, c, fd);
+	}
+	else
+	{
+		if (num <= 9)
+			ft_putchar_fd(num + '0', fd);
+		else
+			ft_putchar_fd(num - 33 + c, fd);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:31:10 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/06 17:10:04 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:34:48 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,52 +58,14 @@ static int	print_nbr_left(char *nbr, int *flags, int neg)
 	return (i + j + flags[1]);
 }
 
-static int	ft_intlen(long long n)
-{
-	int	len;
-
-	len = !n;
-	while (n)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-static char	*itoa_positive(long long n)
-{
-	char		*c;
-	bool		sign;
-	long long	len;
-
-	sign = n < 0;
-	len = ft_intlen(n);
-	c = (char *)malloc(sizeof(char) * (len + 1));
-	if (!c)
-		return (NULL);
-	c[len] = '\0';
-	if (sign)
-	{
-		c[--len] = -(n % 10) + '0';
-		n = -(n / 10);
-	}
-	while (len--)
-	{
-		c[len] = n % 10 + '0';
-		n = n / 10;
-	}
-	return (c);
-}
-
 int	print_nbr(int n, int *flags)
 {
 	int		len;
 	bool	neg;
 	char	*nbr;
 
-	nbr = itoa_positive(n);
-	len = ft_intlen(n);
+	nbr = ft_itoapositive(n);
+	len = ft_intlen(n, 10);
 	neg = n < 0;
 	if (flags[5] && !flags[6] && !n)
 		flags[5] += len--;

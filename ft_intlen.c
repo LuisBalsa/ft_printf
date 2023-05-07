@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:45:11 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/07 17:23:49 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/07 18:07:51 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/07 18:16:27 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_intlen(long long n, int base)
 {
-	int	i;
+	int	len;
 
-	ft_printf("ft_%c", '|');
-	i = ft_printf("%-30.10p", NULL);
-	ft_printf("%c", '|');
-	printf("\n%d\n", i);
-	printf("%4c", '|');
-	i = printf("%30p", NULL);
-	printf("%c", '|');
-	printf("\n%d\n", i);
-	return (0);
+	len = !n;
+	while (n)
+	{
+		n /= base;
+		len++;
+	}
+	return (len);
 }

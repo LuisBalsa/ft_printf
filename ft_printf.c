@@ -6,24 +6,11 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/04 23:25:24 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:10:41 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	ft_intlen(int n)
-{
-	int	len;
-
-	len = !n;
-	while (n)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
 
 static int	flags_nbr(const char *param, int *flags)
 {
@@ -31,7 +18,7 @@ static int	flags_nbr(const char *param, int *flags)
 	int	n;
 
 	n = ft_atoi(param);
-	i = ft_intlen(n) - 1;
+	i = ft_intlen(n, 10) - 1;
 	if (flags[5])
 		flags[6] = n;
 	else
@@ -78,10 +65,10 @@ static int	check_conversion(const char param, va_list ap, int *flags)
 		return (print_nbr(va_arg(ap, int), flags));
 	if (param == 'x' || param == 'X')
 		return (print_hex(va_arg(ap, unsigned int), flags, param));
-/* 	if (*param == 'u')
-		return (print_unsigned);
-	if (*param == 'p')
-		return (print_pointer); */
+	if (param == 'u')
+		return (print_unsigned(va_arg(ap, unsigned int), flags));
+	if (param == 'p')
+		return (print_pointer(va_arg(ap, unsigned long long), flags));
 	return (0);
 }
 
