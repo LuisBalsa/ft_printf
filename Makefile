@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 15:31:42 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/07 18:35:03 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/08 11:05:15 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ $(NAME) : $(OBJ)
 	@ $(AR) $(NAME) $(OBJ)
 	@ echo "$(GREEN)Updated libftprintf.a$(DEF_COLOR)"
 	@ echo "$(BLUE)Compiled libftprintf.a with sucess!$(DEF_COLOR)"
-
 
 %.o : %.c
 	@ echo "$(YELLOW)Compiling: $<$(DEF_COLOR)"
