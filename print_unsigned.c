@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 01:00:31 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/07 18:36:06 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/08 10:02:52 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	print_nbr_right(char *nbr, int *flags)
 	if (flags[5] < 2)
 		ft_putstr_fd(nbr, 1);
 	free(nbr);
-	return (i + j + flags[1] + flags[2]);
+	return (i + j);
 }
 
 static int	print_nbr_left(char *nbr, int *flags)
@@ -43,7 +43,7 @@ static int	print_nbr_left(char *nbr, int *flags)
 	free(nbr);
 	while (i < flags[7])
 		i += write(1, " ", 1);
-	return (i + j + flags[1] + flags[2]);
+	return (i + j);
 }
 
 int	print_unsigned(unsigned int n, int *flags)
