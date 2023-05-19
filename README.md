@@ -24,7 +24,7 @@ The basic conversions supported by `ft_printf` are:
 
 - `+`: Adds a plus sign (`+`) before positive numbers.
 - ` ` (space): Inserts a space before positive numbers.
-- `#`: Adds the "alternative form" for octal (`0`) and hexadecimal (`0x` or `0X`) conversions.
+- `#`: Adds the "alternative form" for hexadecimal (`0x` or `0X`) conversions.
 - `-`: Left-aligns the converted value within the field width.
 - `0`: Pads the field width with leading zeros.
 - `.` (dot): Specifies the precision of the conversion.
