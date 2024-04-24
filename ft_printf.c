@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:25:34 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/07 18:10:41 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/04/24 03:35:08 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	ft_printf(const char *param, ...)
 	int		flags[8];
 	va_list	ap;
 
+	if (!param)
+		return (-1);
 	va_start(ap, param);
 	count = 0;
 	k = 0;

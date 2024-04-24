@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 19:54:53 by luide-so          #+#    #+#             */
-/*   Updated: 2023/04/25 17:27:14 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/04/24 03:29:46 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 		{
 			if (!little[j + 1])
 				return ((char *)&big[i]);
-		j++;
+			j++;
 		}
 		i++;
 	}
